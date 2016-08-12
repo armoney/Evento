@@ -1,5 +1,11 @@
 > **Note**: This branch (master) contains a skeleton without any app code, perfect for creating a _new_ application or challenge. If you're looking for an example app built with this skeleton, take a look at the [example](/../..//tree/example) branch which includes basic CRUD and RSpec tests.
 
+Event-o
+
+Have you ever tried to create an event and invite your friends through social media?  Some friends are on FB, some aren't, some are on IG, some aren't.  Now you can create an event and invite all of your contacts through text! Register and start making your events now!
+
+
+
 ### Purpose
 The Sinatra Skeleton:
 
