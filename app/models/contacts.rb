@@ -1,3 +1,4 @@
 class Contacts < ActiveRecord::Base
-  # Remember to create a migration!
+  belongs_to :users
+  has_many :events, through: :invitees
 end

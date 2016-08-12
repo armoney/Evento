@@ -1,3 +1,4 @@
 class Users < ActiveRecord::Base
-  # Remember to create a migration!
+  has_many :events
+  has_many :contacts
 end

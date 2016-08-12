@@ -1,3 +1,4 @@
 class Invitees < ActiveRecord::Base
-  # Remember to create a migration!
+  belongs_to :events
+  belongs_to :contacts
 end
