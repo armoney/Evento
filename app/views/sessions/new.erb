@@ -1,0 +1,21 @@
+
+
+
+
+
+
+
+<% #if current_user %>
+<!--   <a href="/users/<%= current_user.id %>">Profile Page</a>
+  <form action="/sessions" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Logout!">
+  </form> -->
+<% #else %>
+<!--   <a href="/users/new">Register Now - It's Awesome! Right Meow</a>
+  <form action="/sessions" method="POST">
+    <input type="text" name="email" placeholder="Email">
+    <input type="password" name="password" placeholder="Password">
+    <input type="submit" value="submit">
+  </form> -->
+<% #end %>

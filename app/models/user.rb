@@ -1,6 +1,6 @@
 require 'bcrypt'
 
-class Users < ActiveRecord::Base
+class User < ActiveRecord::Base
   has_many :events, { foreign_key: :host_id }
   has_many :contacts
 
