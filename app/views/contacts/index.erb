@@ -3,8 +3,6 @@
 
   <h1><%= current_user.first_name.capitalize %>'s Contacts</h1>
 
-  <a href="/users/<%= @user.id %>">Profile</a>
-
   <% @user.contacts.each do |contact| %>
     <p><%= contact.first_name %><%= contact.last_name %></p>
     <p><%= contact.phone %></p>
