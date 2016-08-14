@@ -32,14 +32,14 @@ delete '/users/:user_id/events/:id' do
   redirect "/users/#{params[:user_id]}"
 end
 
-# Users EDIT
+# Events EDIT
 get '/users/:user_id/events/:id/edit' do
   @user = User.find(params[:user_id])
   @event = Event.find(params[:id])
   erb :'events/edit'
 end
 
-# Users UPDATE
+# Events UPDATE
 put '/users/:user_id/events/:id' do
   @event = Event.find(params[:id])
   @event.update(params[:event])
