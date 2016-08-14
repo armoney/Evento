@@ -27,13 +27,6 @@ get '/users/:id' do
 end
 
 
-
-# # Users SHOW
-# get '/users/:id' do
-#   @user = User.find(params[:id])
-#   erb :'users/show'
-# end
-
 # # Users INDEX
 # get '/users' do
 #   @users = User.all
@@ -45,8 +38,6 @@ end
 #   @user = User.find(params[:id])
 #   erb :'users/edit'
 # end
-
-
 
 # # Users UPDATE
 # put '/users/:id' do
