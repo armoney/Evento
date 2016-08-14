@@ -1,4 +1,4 @@
-class Invitees < ActiveRecord::Base
+class Invitee < ActiveRecord::Base
   belongs_to :event
   belongs_to :contact
 

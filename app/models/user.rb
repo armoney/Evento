@@ -1,6 +1,6 @@
 require 'bcrypt'
 
-class Users < ActiveRecord::Base
+class User < ActiveRecord::Base
   has_many :events, { foreign_key: :host_id }
   has_many :contacts
 
@@ -35,5 +35,9 @@ class Users < ActiveRecord::Base
   def password=(new_password)
     @password = Password.create(new_password)
     self.password_hash = @password
+  end
+
+  def authenticate(input_password)
+    self.password == input_password
   end
 end
