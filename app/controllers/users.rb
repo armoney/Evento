@@ -22,7 +22,9 @@ end
 
 #Users Show
 get '/users/:id' do
+
   @user = User.find(params[:id])
+  @user_events = @user.events
   erb :'users/show'
 end
 

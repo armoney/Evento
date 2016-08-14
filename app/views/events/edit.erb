@@ -1,0 +1,25 @@
+<div class="container">
+  <h2>Edit your event</h2>
+
+  <form class="event_data" action="/users/<%= @user.id %>/events/<%= @event.id %>" method="POST">
+    <input type="hidden" name="_method" value="put">
+
+    <label>Title:</label>
+    <input type="text" name="event[title]" value="<%= @event.title %>">
+
+    <label>Description:</label>
+    <textarea rows="10" cols="50" name="event[description]"><%= @event.title %></textarea>
+
+    <label>Address:</label>
+    <input type="text" name="event[address]" value="<%= @event.address %>">
+
+    <label>Date:</label>
+    <input type="date" name="event[date]" value="<%= @event.date %>">
+
+    <label>Time:</label>
+    <input type="time" name="event[time]" value="<%= @event.time %>">
+
+    <input type="submit" value="Create Event">
+  </form>
+
+</div>
