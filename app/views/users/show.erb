@@ -1,6 +1,17 @@
 <div class='container'>
 
-  <h1>Create Your Event <%= current_user.first_name.capitalize %></h1>
+  <h1><%= current_user.first_name.capitalize %>'s Profile</h1>
 
+  <a href="/../users/<%= @user.id %>/events/new">Create an Event!</a><br>
+
+  <% @user_events.each do |event| %>
+    <a href="/../users/<%= @user.id %>/events/<%= event.id %>"><%= event.title %></a>
+    <form action="/../users/<%= @user.id %>/events/<%= event.id %>"  method="post">
+      <input type="hidden" name="_method" value= "delete">
+      <input type="submit" value="delete">
+    </form>
+    <a href="/users/<%= @user.id %>/events/<%= event.id %>/edit">edit</a>
+    <br>
+  <% end %>
 
 </div>
