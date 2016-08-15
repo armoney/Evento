@@ -1,3 +1,9 @@
+require 'dotenv'
+Dotenv.load
+require 'rubygems'
+require 'twilio-ruby'
+
+
 get '/users/:user_id/events/:event_id/invitees' do
   @user = User.find(params[:user_id])
   @event = Event.find(params[:event_id])
@@ -5,18 +11,30 @@ get '/users/:user_id/events/:event_id/invitees' do
 end
 
 post '/users/:user_id/events/:event_id/invitees' do
-  p params[:contacts]
-  p params[:user_id]
-  p params[:event_id]
 
-  # @user = User.find(params[:user_id])
+  event = Event.find(params[:event_id])
+  user = User.find(params[:user_id])
 
-  # event_num = @user.events.length + 1
+  message = "You're invited to #{event.title}. #{event.url}"
 
-  # params[:event][:host_id] = @user.id
-  # params[:event][:url] = "http://localhost:9393/users/#{@user.id}/event/#{event_num}"
+  account_sid = ENV['TWILIO_ACCOUNT_SID']
+  auth_token = ENV['TWILIO_AUTH_TOKEN']
 
-  # @event = Event.create(params[:event])
+  client = Twilio::REST::Client.new account_sid, auth_token
 
-  # redirect "/users/#{@user.id}/event/#{@event.id}"
+  params[:contacts].each do |contact_id|
+
+    contact = user.contacts.find(contact_id)
+
+    if client.account.messages.create({
+      :from => '+16502156875',
+      :to => contact.phone,
+      :body => message
+    })
+    end
+
+  end
+
+  redirect "/users/#{user.id}/events/#{event.id}"
+
 end
