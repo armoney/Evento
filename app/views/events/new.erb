@@ -1,7 +1,7 @@
 <div class="container">
   <h2><%= @user.first_name.capitalize %>'s Event</h2>
 
-  <form class="register" action="/users/<%= @user.id %>/event" method="Post">
+  <form class="register" action="/users/<%= @user.id %>/events" method="Post">
     <label>Title:</label>
     <input type="text" name="event[title]" placeholder="Party!!!">
     <label>Description:</label>
@@ -12,7 +12,8 @@
     <input type="date" name="event[date]">
     <label>Time:</label>
     <input type="time" name="event[time]">
-    <input type="submit" value="Create Event">
+
+    <input type="submit" value="Create">
   </form>
 
 </div>

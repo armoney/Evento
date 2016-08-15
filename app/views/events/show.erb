@@ -1,12 +1,15 @@
 <div class='container'>
 
-<a href="/users/<%= @user.id %>">Profile</a>
+  <h1><%= @event.title %></h1>
+  <p><%= @event.description %></p>
+  <p><%= @event.address %></p>
+  <p><%= @event.date %></p>
+  <p><%= @event.time %></p>
 
-<h1><%= @event.title %></h1>
-<p><%= @event.description %></p>
-<p><%= @event.address %></p>
-<p><%= @event.date %></p>
-<p><%= @event.time %></p>
+  <a href="/users/<%= @user.id %>"><%= @user.first_name.capitalize %>'s Profile</a>
 
-<a href="/users/<%= @user.id %>">Profile</a>
+  <% if current_user.id == @user.id %>
+    <a href="/../users/<%= @user.id %>/events/<%= @event.id %>/invitees">Invite Contacts</a>
+  <% end %>
+
 </div>

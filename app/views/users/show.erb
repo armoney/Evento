@@ -4,6 +4,10 @@
 
   <a href="/../users/<%= @user.id %>/events/new">Create an Event!</a><br>
 
+  <a href="/../users/<%= @user.id %>/contacts/new">Add a contact</a><br>
+
+  <a href="/../users/<%= @user.id %>/contacts/index">View contacts</a><br>
+
   <% @user_events.each do |event| %>
     <a href="/../users/<%= @user.id %>/events/<%= event.id %>"><%= event.title %></a>
     <form action="/../users/<%= @user.id %>/events/<%= event.id %>"  method="post">
