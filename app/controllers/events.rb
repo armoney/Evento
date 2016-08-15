@@ -18,7 +18,7 @@ post '/users/:user_id/events' do
   event_num = @user.events.length + 1
 
   params[:event][:host_id] = @user.id
-  params[:event][:url] = "http://eventosms.herokuapp.com/users/#{@user.id}/event/#{event_num}"
+  params[:event][:url] = "http://eventosms.herokuapp.com/users/#{@user.id}/events/#{event_num}"
 
   @event = Event.create(params[:event])
 
