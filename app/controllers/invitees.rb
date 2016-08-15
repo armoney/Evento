@@ -15,7 +15,7 @@ post '/users/:user_id/events/:event_id/invitees' do
   event = Event.find(params[:event_id])
   user = User.find(params[:user_id])
 
-  message = "You're invited to #{event.title}. #{event.url}"
+  message = "#{user.first_name} #{user.last_name} invited you to #{event.title}. #{event.url}"
 
   account_sid = ENV['TWILIO_ACCOUNT_SID']
   auth_token = ENV['TWILIO_AUTH_TOKEN']
