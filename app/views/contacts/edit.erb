@@ -1,0 +1,19 @@
+<div class="container">
+  <h2>Edit your Contact</h2>
+
+  <form class="contact_data" action="/users/<%= @user.id %>/contacts/<%= @contact.id %>" method="POST">
+    <input type="hidden" name="_method" value="put">
+
+    <label>First Name:</label>
+    <input type="text" name="contact[first_name]" value="<%= @contact.first_name %>">
+
+    <label>Last Name:</label>
+    <input type="text" name="contact[last_name]" value="<%= @contact.last_name %>">
+
+    <label>Number:</label>
+    <input type="text" name="contact[phone]" value="<%= @contact.phone %>">
+
+    <input type="submit" value="Submit">
+  </form>
+
+</div>

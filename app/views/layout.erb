@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- 
+  <!--
     normalize.css removes cross-browser differences in defaults, e.g.,
     differences in how form elements appear between Firefox and IE
     See: http://necolas.github.com/normalize.css/
@@ -15,9 +15,32 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
 
-  <title></title>
+  <title>Evento</title>
 </head>
 <body>
+  <div class='header_container'>
+    <nav>
+
+      <% if current_user %>
+        <img src="http://i.istockimg.com/file_thumbview_approve/7594473/3/stock-illustration-7594473-cartoon-megaphone.jpg" alt='Bull horn' height="60" width="60">
+
+        <a href="/users/<%= current_user.id %>">My Profile</a>
+        <form action="/sessions"  method="post">
+          <input type="hidden" name="_method" value= "delete">
+          <input type="submit" value="Logout">
+        </form>
+
+      <% else %>
+
+        <img src="http://i.istockimg.com/file_thumbview_approve/7594473/3/stock-illustration-7594473-cartoon-megaphone.jpg" alt='Bull horn' height="60" width="60">
+
+      <% end %>
+
+    </nav>
+
+  </div>
+
   <%= yield %>
+
 </body>
 </html>

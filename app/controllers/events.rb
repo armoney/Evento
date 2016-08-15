@@ -12,7 +12,7 @@ get '/users/:user_id/events/:id' do
 end
 
 # Events CREATE
-post '/users/:user_id/event' do
+post '/users/:user_id/events' do
   @user = User.find(params[:user_id])
 
   event_num = @user.events.length + 1
@@ -20,9 +20,9 @@ post '/users/:user_id/event' do
   params[:event][:host_id] = @user.id
   params[:event][:url] = "http://localhost:9393/users/#{@user.id}/event/#{event_num}"
 
-  Event.create(params[:event])
+  @event = Event.create(params[:event])
 
-  redirect "/users/#{@user.id}"
+  redirect "/users/#{@user.id}/events/#{@event.id}"
 end
 
 # Events DELETE
@@ -32,14 +32,14 @@ delete '/users/:user_id/events/:id' do
   redirect "/users/#{params[:user_id]}"
 end
 
-# Users EDIT
+# Events EDIT
 get '/users/:user_id/events/:id/edit' do
   @user = User.find(params[:user_id])
   @event = Event.find(params[:id])
   erb :'events/edit'
 end
 
-# Users UPDATE
+# Events UPDATE
 put '/users/:user_id/events/:id' do
   @event = Event.find(params[:id])
   @event.update(params[:event])
