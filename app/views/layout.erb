@@ -24,7 +24,7 @@
       <% if current_user %>
         <img src="http://i.istockimg.com/file_thumbview_approve/7594473/3/stock-illustration-7594473-cartoon-megaphone.jpg" alt='Bull horn' height="60" width="60">
 
-        <a href="/users/<%= current_user.id %>">Profile</a>
+        <a href="/users/<%= current_user.id %>">My Profile</a>
         <form action="/sessions"  method="post">
           <input type="hidden" name="_method" value= "delete">
           <input type="submit" value="Logout">

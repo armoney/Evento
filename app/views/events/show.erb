@@ -8,4 +8,8 @@
 
   <a href="/users/<%= @user.id %>"><%= @user.first_name.capitalize %>'s Profile</a>
 
+  <% if current_user.id == @user.id %>
+    <a href="/../users/<%= @user.id %>/events/<%= @event.id %>/invitees">Invite Contacts</a>
+  <% end %>
+
 </div>
