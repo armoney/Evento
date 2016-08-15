@@ -12,7 +12,7 @@ get '/users/:user_id/events/:id' do
 end
 
 # Events CREATE
-post '/users/:user_id/event' do
+post '/users/:user_id/events' do
   @user = User.find(params[:user_id])
 
   event_num = @user.events.length + 1
@@ -22,7 +22,7 @@ post '/users/:user_id/event' do
 
   @event = Event.create(params[:event])
 
-  redirect "/users/#{@user.id}/event/#{@event.id}"
+  redirect "/users/#{@user.id}/events/#{@event.id}"
 end
 
 # Events DELETE
