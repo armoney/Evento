@@ -1,0 +1,14 @@
+<div class="container">
+
+  <h1>Invite your contacts</h1>
+
+  <form class="invite" action="/users/<%= @user.id %>/events/<%= @event.id %>/invitees" method="Post">
+    <select multiple name="contacts[]">
+      <% @user.contacts.each do |contact| %>
+      <option value="<%=  contact.id %>"><%=  contact.first_name %> <%=   contact.last_name %></option>
+      <% end %>
+    </select>
+    <input type="submit" value="Invite">
+  </form>
+
+</div>

@@ -20,9 +20,9 @@ post '/users/:user_id/event' do
   params[:event][:host_id] = @user.id
   params[:event][:url] = "http://localhost:9393/users/#{@user.id}/event/#{event_num}"
 
-  Event.create(params[:event])
+  @event = Event.create(params[:event])
 
-  redirect "/users/#{@user.id}"
+  redirect "/users/#{@user.id}/event/#{@event.id}"
 end
 
 # Events DELETE
