@@ -1,47 +1,53 @@
 # Events NEW
-get '/users/:user_id/events/new' do
-  @user = User.find(params[:user_id])
+get '/events/new' do
+  @user = User.find(current_user.id)
   erb :'/events/new'
 end
 
 # Events SHOW
-get '/users/:user_id/events/:id' do
-  @user = User.find(params[:user_id])
+get '/events/:id' do
   @event = Event.find(params[:id])
+  @host = @event.host
   erb :'events/show'
 end
 
+# Events User's SHOW
+# get '/events' do
+#   @user_events = current_user.events
+#   erb :'events/user_events'
+# end
+
 # Events CREATE
-post '/users/:user_id/events' do
-  @user = User.find(params[:user_id])
+post '/events' do
+  @user = current_user
 
   event_num = @user.events.length + 1
 
   params[:event][:host_id] = @user.id
-  params[:event][:url] = "http://eventosms.herokuapp.com/users/#{@user.id}/events/#{event_num}"
+  params[:event][:url] = "http://eventosms.herokuapp.com/events/#{event_num}"
 
   @event = Event.create(params[:event])
 
-  redirect "/users/#{@user.id}/events/#{@event.id}"
+  redirect "/events/#{@event.id}"
 end
 
 # Events DELETE
-delete '/users/:user_id/events/:id' do
+delete '/events/:id' do
   @event = Event.find(params[:id])
   @event.destroy
-  redirect "/users/#{params[:user_id]}"
+  redirect "/users/#{current_user.id}"
 end
 
 # Events EDIT
-get '/users/:user_id/events/:id/edit' do
-  @user = User.find(params[:user_id])
+get '/events/:id/edit' do
+  @user = User.find(current_user.id)
   @event = Event.find(params[:id])
   erb :'events/edit'
 end
 
 # Events UPDATE
-put '/users/:user_id/events/:id' do
+put '/events/:id' do
   @event = Event.find(params[:id])
   @event.update(params[:event])
-  redirect "/users/#{params[:user_id]}/events/#{params[:id]}"
+  redirect "/events/#{params[:id]}"
 end

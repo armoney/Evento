@@ -7,9 +7,9 @@
     <p><%= contact.first_name %><%= contact.last_name %></p>
     <p><%= contact.phone %></p>
 
-    <a href="/users/<%= @user.id %>/contacts/<%= contact.id %>/edit">edit</a>
+    <a href="/contacts/<%= contact.id %>/edit">edit</a>
 
-    <form action="/users/<%= @user.id %>/contacts/<%= contact.id %>"  method="post">
+    <form action="/contacts/<%= contact.id %>"  method="post">
       <input type="hidden" name="_method" value= "delete">
       <input type="submit" value="delete">
     </form>

@@ -4,18 +4,18 @@ require 'rubygems'
 require 'twilio-ruby'
 
 
-get '/users/:user_id/events/:event_id/invitees' do
-  @user = User.find(params[:user_id])
+get '/events/:event_id/invitees' do
+  @user = User.find(current_user.id)
   @event = Event.find(params[:event_id])
   erb :'invitees/show'
 end
 
-post '/users/:user_id/events/:event_id/invitees' do
+post '/events/:event_id/invitees' do
 
   event = Event.find(params[:event_id])
-  user = User.find(params[:user_id])
+  user = User.find(current_user.id)
 
-  message = "#{user.first_name} #{user.last_name} invited you to #{event.title}. #{event.url}"
+  message = "#{user.first_name.capitalize} #{user.last_name.capitalize} invited you to #{event.title.capitalize}: #{event.url}"
 
   account_sid = ENV['TWILIO_ACCOUNT_SID']
   auth_token = ENV['TWILIO_AUTH_TOKEN']
@@ -35,6 +35,6 @@ post '/users/:user_id/events/:event_id/invitees' do
 
   end
 
-  redirect "/users/#{user.id}/events/#{event.id}"
+  redirect "/events/#{event.id}"
 
 end
