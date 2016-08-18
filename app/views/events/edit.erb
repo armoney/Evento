@@ -1,7 +1,7 @@
 <div class="container">
   <h2>Edit your event</h2>
 
-  <form class="event_data" action="/users/<%= @user.id %>/events/<%= @event.id %>" method="POST">
+  <form class="event_data" action="/events/<%= @event.id %>" method="POST">
     <input type="hidden" name="_method" value="put">
 
     <label>Title:</label>

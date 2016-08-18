@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :host, { class_name: 'User' } 
   has_many :contacts, through: :invitees
 
   validates :title, :description, :url, presence: true

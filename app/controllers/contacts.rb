@@ -1,43 +1,43 @@
 # Contacts NEW
-get '/users/:user_id/contacts/new' do
-  @user = User.find(params[:user_id])
+get '/contacts/new' do
+  @user = User.find(current_user.id)
   erb :'/contacts/new'
 end
 
 # Contacts INDEX
-get '/users/:user_id/contacts/index' do
-  @user = User.find(params[:user_id])
+get '/contacts/index' do
+  @user = User.find(current_user.id)
 
   erb :'contacts/index'
 end
 
 # Contacts CREATE
-post '/users/:user_id/contact' do
+post '/contact' do
   #Add user_id to contact record
-  params[:contact][:user_id] = params[:user_id]
+  params[:contact][:user_id] = current_user.id
 
   @contact = Contact.create(params[:contact])
 
-  redirect "/users/#{params[:user_id]}"
+  redirect "/users/#{current_user.id}"
 end
 
 # Contacts EDIT
-get '/users/:user_id/contacts/:id/edit' do
-  @user = User.find(params[:user_id])
+get '/contacts/:id/edit' do
+  @user = User.find(current_user.id)
   @contact = Contact.find(params[:id])
   erb :'contacts/edit'
 end
 
 # Contacts UPDATE
-put '/users/:user_id/contacts/:id' do
+put '/contacts/:id' do
   @contact = Contact.find(params[:id])
   @contact.update(params[:contact])
-  redirect "/users/#{params[:user_id]}/contacts/index"
+  redirect "/contacts/index"
 end
 
 # Contacts DELETE
-delete '/users/:user_id/contacts/:id' do
+delete '/contacts/:id' do
   @contact = Contact.find(params[:id])
   @contact.destroy
-  redirect "/users/#{params[:user_id]}/contacts/index"
+  redirect "/contacts/index"
 end
