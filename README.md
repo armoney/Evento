@@ -14,3 +14,5 @@ To create and app with:
 4. CSS styling
 5. JavaScript
 6. Heroku deployment
+
+DBC Phase-2 Passion Project
