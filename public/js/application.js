@@ -26,7 +26,6 @@ function showEventFormListener(){
 
 		request.done(function(response_data){
 			$('.new-event').append(response_data);
-			$(that).remove();
 		});
 
 	});
@@ -48,6 +47,7 @@ function submitEventFormListener(){
 
 		request.done(function(response_data){
 			$('.user-events').append(response_data);
+			$('.make-event-notifier').hide();
 			$(that).remove();
 		});
 
