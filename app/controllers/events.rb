@@ -11,21 +11,16 @@ get '/events/:id' do
   erb :'events/show'
 end
 
-# Events User's SHOW
-# get '/events' do
-#   @user_events = current_user.events
-#   erb :'events/user_events'
-# end
-
 # Events CREATE
 post '/events' do
   @user = current_user
 
-  @event = Event.create(params[:event])
-
   params[:event][:host_id] = @user.id
   params[:event][:url] = "eventosms.herokuapp.com/events/#{@event.id}"
 
+  @event = Event.create(params[:event])
+
+  @event.update(url: "eventosms.herokuapp.com/events/#{@event.id}")
 
   redirect "/events/#{@event.id}"
 end
