@@ -20,10 +20,12 @@
 </head>
 <body>
   <div class='header_container'>
+    <h1 class='name'>Evento</h1>
+    <img class="resize" src='https://s-media-cache-ak0.pinimg.com/736x/2c/84/0e/2c840e86d494c5e809f850b00a69ad29.jpg'>
     <nav>
 
       <% if current_user %>
-        <img src="http://i.istockimg.com/file_thumbview_approve/7594473/3/stock-illustration-7594473-cartoon-megaphone.jpg" alt='Bull horn' height="60" width="60">
+<!--         <img src="http://i.istockimg.com/file_thumbview_approve/7594473/3/stock-illustration-7594473-cartoon-megaphone.jpg" alt='Bull horn' height="60" width="60"> -->
 
         <a href="/users/<%= current_user.id %>">My Profile</a>
         <form action="/sessions"  method="post">
@@ -31,9 +33,9 @@
           <input type="submit" value="Logout">
         </form>
 
-      <% else %>
+<!--       <% #else %>
 
-        <img src="http://i.istockimg.com/file_thumbview_approve/7594473/3/stock-illustration-7594473-cartoon-megaphone.jpg" alt='Bull horn' height="60" width="60">
+        <img src="http://i.istockimg.com/file_thumbview_approve/7594473/3/stock-illustration-7594473-cartoon-megaphone.jpg" alt='Bull horn' height="60" width="60"> -->
 
       <% end %>
 
