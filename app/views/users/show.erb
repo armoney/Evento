@@ -11,6 +11,7 @@
 
   <div class='user-events'>
     <h3>EVENTS</h3>
+    <% if !@user_events.empty? %>
       <% @user_events.each do |event| %>
         <a href="/../events/<%= event.id %>"><%= event.title %></a>
         <form action="/../events/<%= event.id %>"  method="post">
@@ -20,6 +21,9 @@
         <a href="/events/<%= event.id %>/edit">edit</a>
     <br>
       <% end %>
+    <% else %>
+      <p id='make-event-notifier'>Make an event!</p>
+    <% end %>
   </div>
 
 </div>
