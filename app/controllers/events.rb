@@ -15,11 +15,12 @@ end
 post '/events' do
   @user = current_user
 
-  @event = Event.create(params[:event])
-
   params[:event][:host_id] = @user.id
   params[:event][:url] = "eventosms.herokuapp.com/events/#{@event.id}"
 
+  @event = Event.create(params[:event])
+
+  @event.update(url: "eventosms.herokuapp.com/events/#{@event.id}")
 
   redirect "/events/#{@event.id}"
 end
