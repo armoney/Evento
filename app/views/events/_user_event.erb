@@ -1,0 +1,7 @@
+<a href="/../events/<%= @event.id %>"><%= @event.title %></a>
+<form action="/../events/<%= @event.id %>"  method="post">
+  <input type="hidden" name="_method" value= "delete">
+  <input type="submit" value="delete">
+</form>
+<a href="/events/<%= @event.id %>/edit">edit</a>
+<br>
