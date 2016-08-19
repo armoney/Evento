@@ -1,7 +1,11 @@
 # Contacts NEW
 get '/contacts/new' do
   @user = User.find(current_user.id)
-  erb :'/contacts/new'
+  if request.xhr?
+    erb :'/contacts/_new', layout: false
+  else
+    erb :'/contacts/new'
+  end
 end
 
 # Contacts INDEX
@@ -18,7 +22,11 @@ post '/contact' do
 
   @contact = Contact.create(params[:contact])
 
-  redirect "/users/#{current_user.id}"
+  if request.xhr? 
+    erb :'/contacts/_show', layout: false
+  else 
+    redirect "/contacts/index"
+  end
 end
 
 # Contacts EDIT

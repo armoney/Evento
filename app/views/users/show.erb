@@ -2,20 +2,24 @@
 
   <h1><%= @user.first_name.capitalize %>'s Profile</h1>
 
-  <a href="/../events/new">Create an Event!</a><br>
 
-  <a href="/../contacts/new">Add a contact</a><br>
+  <div class="new-event">
+    <a href="/../events/new">Create an Event!</a><br>
+  </div>
 
   <a href="/../contacts/index">View contacts</a><br>
 
-  <% @user_events.each do |event| %>
-    <a href="/../events/<%= event.id %>"><%= event.title %></a>
-    <form action="/../events/<%= event.id %>"  method="post">
-      <input type="hidden" name="_method" value= "delete">
-      <input type="submit" value="delete">
-    </form>
-    <a href="/events/<%= event.id %>/edit">edit</a>
+  <div class='user-events'>
+    <h3>EVENTS</h3>
+      <% @user_events.each do |event| %>
+        <a href="/../events/<%= event.id %>"><%= event.title %></a>
+        <form action="/../events/<%= event.id %>"  method="post">
+          <input type="hidden" name="_method" value= "delete">
+          <input type="submit" value="delete">
+        </form>
+        <a href="/events/<%= event.id %>/edit">edit</a>
     <br>
-  <% end %>
+      <% end %>
+  </div>
 
 </div>
