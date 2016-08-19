@@ -3,7 +3,7 @@
   <h1>Invite your contacts</h1>
 
   <form class="invite" action="/events/<%= @event.id %>/invitees" method="Post">
-    <select multiple name="contacts[]">
+    <select size="15" style="width: 150px;" multiple name="contacts[]">
       <% @user.contacts.each do |contact| %>
       <option value="<%=  contact.id %>"><%=  contact.first_name %> <%=   contact.last_name %></option>
       <% end %>

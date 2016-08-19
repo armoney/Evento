@@ -3,18 +3,26 @@
 
   <h1><%= current_user.first_name.capitalize %>'s Contacts</h1>
 
-  <% @user.contacts.each do |contact| %>
-    <p><%= contact.first_name %><%= contact.last_name %></p>
-    <p><%= contact.phone %></p>
+  <div class='add-contacts'>
+    <a href="/../contacts/new">Add a contact</a><br>
+  </div>
 
-    <a href="/contacts/<%= contact.id %>/edit">edit</a>
+  <div class='contacts'>
 
-    <form action="/contacts/<%= contact.id %>"  method="post">
-      <input type="hidden" name="_method" value= "delete">
-      <input type="submit" value="delete">
-    </form>
+    <% @user.contacts.each do |contact| %>
+      <p><%= contact.first_name %> <%= contact.last_name %></p>
+      <p><%= contact.phone %></p>
+  
+      <a href="/contacts/<%= contact.id %>/edit">edit</a>
+  
+      <form action="/contacts/<%= contact.id %>"  method="post">
+        <input type="hidden" name="_method" value= "delete">
+        <input type="submit" value="delete">
+      </form>
+  
+      <br>
+    <% end %>
 
-    <br>
-  <% end %>
+  </div>
 
 </div>

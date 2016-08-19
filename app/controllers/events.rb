@@ -1,7 +1,11 @@
 # Events NEW
 get '/events/new' do
   @user = User.find(current_user.id)
-  erb :'/events/new'
+  if request.xhr?
+    erb :'/events/_new', layout: false
+  else
+    erb :'events/new'
+  end
 end
 
 # Events SHOW
@@ -21,7 +25,11 @@ post '/events' do
 
   @event.update(url: "eventosms.herokuapp.com/events/#{@event.id}")
 
-  redirect "/events/#{@event.id}"
+  if request.xhr?
+    erb :'events/_user_event', layout: false
+  else
+    redirect "/users/#{@user.id}"
+  end
 end
 
 # Events DELETE
