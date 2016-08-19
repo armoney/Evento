@@ -11,12 +11,6 @@ get '/events/:id' do
   erb :'events/show'
 end
 
-# Events User's SHOW
-# get '/events' do
-#   @user_events = current_user.events
-#   erb :'events/user_events'
-# end
-
 # Events CREATE
 post '/events' do
   @user = current_user
